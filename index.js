@@ -7,10 +7,13 @@ var cheerio = require("cheerio");
 (async function() {
    var scores = {};
    try {
+     var i = 0;
      var rants = (await axios("https://del.dog/raw/rants")).data.split("\n").slice(0,1000);
      console.log("START");
      for (id of rants) {
+         i++;
          try {
+         if (i%1000==0) console.log(scores);
          var rant = await devRant.rant(id);
          scores[rant.rant["user_id"]] = rant.rant["user_score"];
          for (comment of rant.comments) {
