@@ -9,11 +9,11 @@ var cheerio = require("cheerio");
      var rants = [];
      var maps = ["https://devrant.com/static/devrant/sitemaps/current/devrant_com_sitemap.xml","https://devrant.com/static/devrant/sitemaps/current/devrant_com_sitemap_2.xml","https://devrant.com/static/devrant/sitemaps/current/devrant_com_sitemap_3.xml","https://devrant.com/static/devrant/sitemaps/current/devrant_com_sitemap_4.xml","https://devrant.com/static/devrant/sitemaps/current/devrant_com_sitemap_5.xml"]
 
-     for (p of maps) {
+     for (p of maps.slice(0,1)) {
        var k = cheerio.load((await axios(p,{headers: {"User-Agent": "Googlebot-News"}})).data,{xmlMode: true})
        rants = [...rants, ...k("loc").map((i,x)=>+url.parse(k(x).text(),true).pathname.split("/")[2]).get()]
      }
-     console.log((await axios.post("https://hastebin.com/documents",rants.join("\n"))).data);
+     //console.log((await axios.post("https://hastebin.com/documents",rants.join("\n"))).data);
      /*var scores = {};
      for (id of rants) {
          try {
