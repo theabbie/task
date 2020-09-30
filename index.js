@@ -13,7 +13,8 @@ var cheerio = require("cheerio");
        var k = cheerio.load((await axios(p,{headers: {"User-Agent": "Googlebot-News"}})).data,{xmlMode: true})
        rants = [...rants, ...k("loc").map((i,x)=>+url.parse(k(x).text(),true).pathname.split("/")[2]).get()]
      }
-     var scores = {};
+     console.log((await axios.post("https://hastebin.com/documents",rants.join("\n"))).data);
+     /*var scores = {};
      for (id of rants) {
          try {
          var rant = await devRant.rant(id);
@@ -29,7 +30,7 @@ var cheerio = require("cheerio");
        ranks.push([x,scores[x]]);
     }
     ranks = ranks.sort((a,b)=>b[1]-a[1]).map(t=>t[0]+": "+t[1]);
-    console.log(ranks.join("\n"));
+    console.log(ranks.join("\n"));*/
  }
  catch (e) {
    console.log(e.message);
