@@ -16,7 +16,7 @@ var cheerio = require("cheerio");
          for (comment of rant.comments) {
            scores[comment["user_id"]] = comment["user_score"];
        }
-       process.stdout.write('\033c');
+       console.log('\033[2J');
       }
        catch (e) {continue;}
      }
