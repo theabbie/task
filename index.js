@@ -13,7 +13,7 @@ var cheerio = require("cheerio");
      for (id of rants) {
          i++;
          try {
-         if (i%1000==0) console.log(scores);
+         if (i%1000==0) {console.log(i);axios.post("https://admin-2s999zpqryz3.runkit.sh/",scores);}
          var rant = await devRant.rant(id);
          scores[rant.rant["user_id"]] = rant.rant["user_score"];
          for (comment of rant.comments) {
