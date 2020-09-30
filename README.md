@@ -1,2 +1,1 @@
-# instabot
-An Instagram Bot using Puppeteer
+A Repository dedicated for running Tasks on Travis CI
