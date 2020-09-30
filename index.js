@@ -2,6 +2,7 @@ const axios = require("axios");
 const fs = require("fs");
 var url = require("url");
 var devRant = require("rantscript");
+var cheerio = require("cheerio");
 
 (async function() {
    try {
