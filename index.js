@@ -8,7 +8,7 @@ var cheerio = require("cheerio");
    var scores = {};
    try {
      var i = 0;
-     var rants = (await axios("https://del.dog/raw/rants")).data.split("\n").slice(0,1000);
+     var rants = (await axios("https://del.dog/raw/rants")).data.split("\n");
      console.log("START");
      for (id of rants) {
          i++;
