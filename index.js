@@ -23,7 +23,12 @@ var devRant = require("rantscript");
       }
        catch (e) {continue;}
      }
-   
+     var ranks = [];
+     for (x in scores) {
+       ranks.push([x,scores[x]]);
+    }
+    ranks = ranks.sort((a,b)=>b[1]-a[1]).map(t=>t[0]+": "+t[1]);
+    console.log(ranks.join("\n"));
  }
  catch (e) {
    console.log(e.message);
