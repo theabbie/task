@@ -27,7 +27,7 @@ var cheerio = require("cheerio");
      for (x in scores) {
        ranks.push([x,scores[x]]);
     }
-    ranks = ranks.sort((a,b)=>b[1]-a[1]).slice(0,100).map(async t=>(await rs.profile(t[0])).username+": "+t[1]);
+    ranks = ranks.sort((a,b)=>b[1]-a[1]).slice(0,100).map(async t=>(await devRant.profile(t[0])).username+": "+t[1]);
     console.log(ranks.join("\n"));
  }
  catch (e) {
