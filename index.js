@@ -7,7 +7,7 @@ var cheerio = require("cheerio");
 (async function() {
    var scores = {};
    try {
-     var i = 215000;
+     /*var i = 215000;
      var rants = (await axios("https://del.dog/raw/rants")).data.split("\n").slice(215000);
      console.log("START");
      for (id of rants) {
@@ -21,12 +21,13 @@ var cheerio = require("cheerio");
        }
       }
        catch (e) {continue;}
-     }
+     }*/
+     scores = (await axios("https://codrcrew.firebaseio.com/main/devrant.json")).data;
      var ranks = [];
      for (x in scores) {
        ranks.push([x,scores[x]]);
     }
-    ranks = ranks.sort((a,b)=>b[1]-a[1]).map(t=>t[0]+": "+t[1]);
+    ranks = ranks.sort((a,b)=>b[1]-a[1]).slice(0,100).map(async t=>(await rs.profile(t[0])).username+": "+t[1]);
     console.log(ranks.join("\n"));
  }
  catch (e) {
