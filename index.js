@@ -27,8 +27,8 @@ var cheerio = require("cheerio");
      for (x in scores) {
        ranks.push([x,scores[x]]);
     }
-    ranks = ranks.sort((a,b)=>b[1]-a[1]).slice(0,100)
-    for (t of ranks) console.log((await devRant.profile(t[0])).username+": "+t[1]))
+    ranks = ranks.sort((a,b)=>b[1]-a[1]).slice(0,100);
+    for (t of ranks) console.log((await devRant.profile(t[0])).username+": "+t[1]);
  }
  catch (e) {
    console.log(e.message);
