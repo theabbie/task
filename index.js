@@ -27,7 +27,7 @@ var cheerio = require("cheerio");
      for (x in scores) {
        ranks.push([x,scores[x]]);
     }
-    ranks = ranks.sort((a,b)=>b[1]-a[1]).slice(0,1000);
+    ranks = ranks.sort((a,b)=>b[1]-a[1]);
     var k = 0;
     for (t of ranks) console.log(++k+". @"+(await devRant.profile(t[0])).username+": "+t[1]);
  }
