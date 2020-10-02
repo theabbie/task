@@ -28,10 +28,15 @@ var cheerio = require("cheerio");
        ranks.push([x,scores[x]]);
     }
     ranks = ranks.sort((a,b)=>b[1]-a[1]).slice(0,100);
-    var k = 0;
+    var nr = [];
     for (t of ranks) {
         var profile = (await devRant.profile(t[0]));
-        console.log(++k+". @"+profile.username+": "+Math.floor(1000*t[1]/(profile.content.counts.rants+profile.content.counts.comments+profile.content.counts.collabs))/1000);
+        nr.push([profile.username,Math.floor(1000*t[1]/(profile.content.counts.rants+profile.content.counts.comments+profile.content.counts.collabs))/1000]);
+    }
+    nr = nr.sort((a,b)=>b[1]-a[1]);
+    var k = 0;
+    for (t of nr) {
+        console.log(++k+". @"+t[0]+": "+t[1]);
      }
  }
  catch (e) {
