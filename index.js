@@ -31,7 +31,7 @@ var cheerio = require("cheerio");
     var nr = [];
     for (t of ranks) {
         var profile = (await devRant.profile(t[0]));
-        nr.push([profile.username,profile.content.content.rants.map(x=>x["num_comments"]).reduce((a,b)=>a+b)]);
+        nr.push([profile.username,[...profile.content.content.rants.map(x=>x["num_comments"]),0].reduce((a,b)=>a+b)]);
     }
     nr = nr.sort((a,b)=>b[1]-a[1]);
     var k = 0;
