@@ -27,11 +27,11 @@ var cheerio = require("cheerio");
      for (x in scores) {
        ranks.push([x,scores[x]]);
     }
-    ranks = ranks.sort((a,b)=>b[1]-a[1]).slice(0,100);
+    ranks = ranks.sort((a,b)=>b[1]-a[1]).slice(0,1000);
     var nr = [];
     for (t of ranks) {
         var profile = (await devRant.profile(t[0]));
-        nr.push([profile.username,Math.floor(1000*t[1]/((profile.content.counts.rants+profile.content.counts.comments+profile.content.counts.collabs)*Math.floor((Math.floor(Date.now()/1000)-profile["created_time"])/86400)))/1000]);
+        nr.push([profile.username,profile.content.content.rants.map(x=>x["num_comments"]).reduce((a,b)=>a+b)]);
     }
     nr = nr.sort((a,b)=>b[1]-a[1]);
     var k = 0;
