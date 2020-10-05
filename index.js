@@ -12,7 +12,7 @@ var cheerio = require("cheerio");
          try {
          var rant = await devRant.rant(id);
          var time = new Date(rant.rant["created_time"]*1000);
-         await axios.post("https://admin-2s999zpqryz3.runkit.sh/?time=" + d.getFullYear() + '/' + d.getMonth() +'/' + d.getDate() + '/' + d.getDay());
+         await axios.post("https://admin-2s999zpqryz3.runkit.sh/?time=" + time.getFullYear() + '/' + time.getMonth() +'/' + time.getDate() + '/' + time.getDay());
       }
        catch (e) {continue;}
      }
