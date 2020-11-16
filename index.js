@@ -6,14 +6,11 @@ var cheerio = require("cheerio");
 
 (async function() {
    try {
-     var rants = (await axios("https://del.dog/raw/rants")).data.split("\n").slice(0,1000);
      console.log("START");
-     for (id of rants) {
-         try {
-         var rant = await devRant.rant(id);
-         var time = new Date(rant.rant["created_time"]*1000);
-         await axios.post("https://admin-2s999zpqryz3.runkit.sh/?time=" + time.getFullYear() + '/' + time.getMonth() +'/' + time.getDay() + '/' + time.getDate() + '/' + time.getHours());
-      }
+       while (true) {
+         await axios.post("https://www.youthkiawaaz.com/wp-admin/admin-ajax.php?action=yka_view_count&post_id=713208");
+       }
+     }
        catch (e) {continue;}
      }
  }
