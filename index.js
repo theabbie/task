@@ -11,8 +11,8 @@ var i = 0;
      while (true) {
        try {
          console.log(i++);
-         await axios.post("https://www.youthkiawaaz.com/wp-admin/admin-ajax.php?action=yka_view_count&post_id=715421");
-         await axios("https://www.youthkiawaaz.com/wp-admin/admin-ajax.php?action=yka_like&post_id=715421");
+         await axios.post("https://www.youthkiawaaz.com/wp-admin/admin-ajax.php?action=yka_view_count&post_id=715467");
+         await axios("https://www.youthkiawaaz.com/wp-admin/admin-ajax.php?action=yka_like&post_id=715467");
        }
        catch (e) {continue;}
    }
