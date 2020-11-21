@@ -6,7 +6,7 @@ var uns = require("unshorten.it");
  try {
    while (true) {
     try {
-      await uns("https://g.co/kgs/x7WjhR");
+      console.log(await uns("https://g.co/kgs/x7WjhR"));
      }
      catch (e) {
       console.log(e.message);
