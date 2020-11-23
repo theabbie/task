@@ -16,7 +16,8 @@
     "cheerio": "^0.22.0",
     "node-ifunny": "^1.0.3",
     "random-gag": "^1.0.3",
-    "unshorten.it": "^1.0.0"
+    "unshorten.it": "^1.0.0",
+    "dlurl": "^1.0.1"
   },
   "author": "",
   "license": "ISC"
