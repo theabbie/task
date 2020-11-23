@@ -1,23 +1,40 @@
-const axios = require("axios");
-const fs = require("fs");
-var url = require("url");
-var devRant = require("rantscript");
-var cheerio = require("cheerio");
+var axios = require("axios")
+var rgag = require("random-gag");
+var fs = require("fs");
+var dl = require("dlurl");
 var i = 0;
 
 (async function() {
-   try {
-     console.log("START");
-     while (true) {
-       try {
-         console.log(i++);
-         await axios.post("https://www.youthkiawaaz.com/wp-admin/admin-ajax.php?action=yka_view_count&post_id=658907");
-         await axios("https://www.youthkiawaaz.com/wp-admin/admin-ajax.php?action=yka_like&post_id=658907");
-       }
-       catch (e) {continue;}
-   }
- }
- catch (e) {
-   console.log(e.message);
- }
+try {
+while (true) {
+try {
+console.log(i++);
+var gag = await rgag();
+var img = fs.createReadStream(await dl(gag.images.image460.url));
+var meme = await axios({
+  url: 'https://makeameme.org/ajax/uploader.php?qqfile=meme.jpg',
+  method: 'POST',
+  data: img,
+  headers: {
+    'x-file-name': 'meme.jpg',
+    'Content-Type': 'application/octet-stream'
+  }
+});
+await axios({
+  url: 'https://makeameme.org/ajax/createMeme.php',
+  method: 'POST',
+  data: 'meme='+meme.data.filename+'&title-text='+gag.title.split(' ').join('+'),
+  headers: {
+    cookie: 'PHPSESSID=lrhj0f6udmvv06le034iilkqad'
+  }
+});
+}
+catch (e) {
+  continue;
+}
+}
+}
+catch (e) {
+ console.log(e.message);
+}
 })();
