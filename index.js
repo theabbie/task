@@ -20,6 +20,7 @@ var meme = await axios({
     'Content-Type': 'application/octet-stream'
   }
 });
+console.log(meme.data.filename);
 await axios({
   url: 'https://makeameme.org/ajax/createMeme.php',
   method: 'POST',
