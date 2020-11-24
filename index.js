@@ -23,7 +23,7 @@ var meme = await axios({
 await axios({
   url: 'https://makeameme.org/ajax/createMeme.php',
   method: 'POST',
-  data: 'meme='+meme.data.filename+'&title-text='+gag.title.split(' ').join('+'),
+  data: 'meme='+meme.data.filename+'&title-text=TheAbbie:+'+gag.title.split(' ').join('+'),
   headers: {
     cookie: 'PHPSESSID=lrhj0f6udmvv06le034iilkqad'
   }
