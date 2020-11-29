@@ -6,10 +6,6 @@ var fd = require("form-data");
 var i = 0;
 
 (async function() {
-try {
-while (true) {
-try {
-console.log(i++);
 while (true) {
 try {
 var data = new fd();
@@ -29,9 +25,5 @@ console.log(res.data);
 catch (e) {
   console.log(e.message);
 }
-}
-}
-catch (e) {
- console.log(e.message);
 }
 })();
