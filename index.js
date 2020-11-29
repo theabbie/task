@@ -2,6 +2,7 @@ var axios = require("axios")
 var rgag = require("random-gag");
 var fs = require("fs");
 var dl = require("dlurl");
+var fd = require("form-data");
 var i = 0;
 
 (async function() {
@@ -9,29 +10,24 @@ try {
 while (true) {
 try {
 console.log(i++);
+while (true) {
+try {
+var data = new fd();
 var gag = await rgag();
-var img = fs.createReadStream(await dl(gag.images.image460.url));
-var meme = await axios({
-  url: 'https://makeameme.org/ajax/uploader.php?qqfile=meme.jpg',
+var file = fs.createReadStream(await dl(gag.images.image700.url));
+data.append("image",file);
+
+var res = await axios({
+  url: 'https://img.randme.me/',
   method: 'POST',
-  data: img,
-  headers: {
-    'x-file-name': 'meme.jpg',
-    'Content-Type': 'application/octet-stream'
-  }
+  data: data,
+  headers: data.getHeaders()
 });
-console.log(gag.title);
-await axios({
-  url: 'https://makeameme.org/ajax/createMeme.php',
-  method: 'POST',
-  data: 'meme='+meme.data.filename+'&title-text=TheAbbie:+'+gag.title.split(' ').join('+'),
-  headers: {
-    cookie: 'PHPSESSID=lrhj0f6udmvv06le034iilkqad'
-  }
-});
+
+console.log(res.data);
 }
 catch (e) {
-  continue;
+  console.log(e.message);
 }
 }
 }
