@@ -6,13 +6,15 @@ var fd = require("form-data");
 var i = 0;
 
 (async function() {
-while (true) {
-try {
+
 var data = new fd();
 var gag = await rgag();
-var file = fs.createReadStream(await dl(gag.images.image700.url));
+var url = "https://theabbie.github.io/blog/assets/abhishek-chaudhary.jpg"; // gag.images.image700.url;
+var file = fs.createReadStream(await dl(url));
 data.append("image",file);
 
+while (true) {
+try {
 var res = await axios({
   url: 'https://img.randme.me/',
   method: 'POST',
