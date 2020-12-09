@@ -18,7 +18,8 @@
     "random-gag": "^1.0.3",
     "unshorten.it": "^1.0.0",
     "dlurl": "^1.0.1",
-    "form-data": "^3.0.0"
+    "form-data": "^3.0.0",
+    "tenor-api": "^1.0.1"
   },
   "author": "",
   "license": "ISC"
