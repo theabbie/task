@@ -10,11 +10,11 @@ var i = 0;
 
 (async function() {
 await tenor.addToken(process.argv[2]);
-var memes = (await axios("https://memeful.com/web/ajax/posts?count=1000&page=7")).data.data.map(x=>x.animatedUrl);
+var memes = (await axios("https://memeful.com/web/ajax/posts?count=1000&page=6")).data.data.map(x=>x.animatedUrl);
 
 for (meme of memes) {
  try {
-  await tenor.upload(await dl(meme));
+  await tenor.upload(await dl(meme),"theabbie");
   console.log(meme);
   console.log(i++);
  }
