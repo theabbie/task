@@ -15,6 +15,7 @@ var i = 0;
 (async function() {
 while (true) {
   try {
+    console.log(i++);
     await pt.post(text(3),text(50)+'\n\n'+text(150)+'\n\n'+text(50),[text(1),text(1),text(1)]);
   }
   catch(e) {
