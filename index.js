@@ -6,20 +6,19 @@ var axios = require("axios")
 var dl = require("dlurl");
 var Tenor = require("tenor-api");
 var tenor = new Tenor();
+var poetizer = require("poetizer");
+var { text } = require("theabbie");
+var pt = new poetizer();
+pt.addToken(process.argv[2]);
 var i = 0;
 
 (async function() {
-await tenor.addToken(process.argv[2]);
-var memes = (await axios("https://memeful.com/web/ajax/posts?count=1000&page=8")).data.data.map(x=>x.animatedUrl);
-
-for (meme of memes) {
- try {
-  await tenor.upload(await dl(meme),"theabbie");
-  console.log(meme);
-  console.log(i++);
- }
- catch(e) {
-   continue;
- }
+while (true) {
+  try {
+    await pt.post(text(3),text(50)+'\n\n'+text(150)+'\n\n'+text(50),[text(1),text(1),text(1)]);
+  }
+  catch(e) {
+    continue;
+  }
 }
 })();
